@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { TodoStore } from './store/store'
+import TodoList from './components/list'
+import styled from 'styled-components'
+import './App.css'
 
-function App() {
+const App = () => {
+  const store = TodoStore.create({
+    todos: [
+      {
+        title: 'Do the dishes'
+      },
+      {
+        title: 'Wash the bathroom'
+      },
+      {
+        title: 'Walk the dog'
+      }
+    ]
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container>
+      <TodoList todoStore={store} />
+    </Container>
+  )
 }
+
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 300px;
+    margin: 10px auto;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+`
 
 export default App;
