@@ -26,7 +26,6 @@ const TodoList = observer(( {todoStore}: any ) => {
         e.preventDefault()
         setFilterTask(e.target.value)
         todoStore.tasksFilter(e.target.value)
-        console.log(newTask)
     }
 
     return (
